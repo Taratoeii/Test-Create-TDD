@@ -1,0 +1,13 @@
+<h1>Add Question<h1></h1>
+<form action="{% url 'polls:Addquestion' %}" method="post">
+{% csrf_token %}
+    <input type="text" name="Addtext" value="{{ Addtext.id }}">
+<input type="submit" value="Add">
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %} 
